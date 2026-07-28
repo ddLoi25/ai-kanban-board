@@ -13,7 +13,7 @@
   --font-body: var(--font-manrope);
 }
 
-/* ── THEME TOKENS ───────────────────────────────────────────────────────── */
+/* ── THEME TOKENS ────────────────────────────────────────── */
 :root {
   --neo-bg:           #F7F5C8;
   --neo-surface:      #FFFFFF;
@@ -48,7 +48,7 @@
   --neo-scheme:       dark;
 }
 
-/* ── DARK MODE SURFACE OVERRIDES (CSS class descendants) ────────────────── */
+/* ── DARK MODE SURFACE OVERRIDES (CSS class descendants) ────────────── */
 /* CSS variable cascade through inline-style parents is unreliable in some   */
 /* Next.js/Turbopack builds — these explicit rules are the reliable fallback. */
 .dark .glass {
@@ -88,7 +88,7 @@ body {
   transition: background 200ms ease, color 200ms ease;
 }
 
-/* ── NEO-BRUTALIST SURFACE SYSTEM ───────────────────────────────────────── */
+/* ── NEO-BRUTALIST SURFACE SYSTEM ─────────────────────────── */
 
 .glass {
   background: var(--neo-surface);
@@ -128,13 +128,13 @@ body {
   to   { opacity: 1; }
 }
 
-/* ── DATE INPUTS IN DARK MODE ────────────────────────────────────────────  */
+/* ── DATE INPUTS IN DARK MODE ───────────────────────────  */
 .dark input[type="date"],
 .dark select {
   color-scheme: dark;
 }
 
-/* ── SCROLLBARS ──────────────────────────────────────────────────────────  */
+/* ── SCROLLBARS ───────────────────────────────────  */
 .scroll-slim {
   scrollbar-width: thin;
   scrollbar-color: var(--neo-dashed) transparent;
