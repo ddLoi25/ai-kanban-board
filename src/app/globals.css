@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --color-yellow: #F5DF00;
+  --color-pink:   #FF2952;
+  --color-cyan:   #00DADA;
+  --color-orange: #FF6200;
+  --color-purple: #6B21E8;
+  --color-cream:  #F7F5C8;
+  --color-gray-text: #666666;
+
+  --font-display: var(--font-archivo-black);
+  --font-body: var(--font-manrope);
+}
+
+/* ── THEME TOKENS ───────────────────────────────────────────────────────── */
+:root {
+  --neo-bg:           #F7F5C8;
+  --neo-surface:      #FFFFFF;
+  --neo-border:       #000000;
+  --neo-shadow:       #000000;
+  --neo-text:         #000000;
+  --neo-muted:        rgba(0,0,0,0.55);
+  --neo-subtle:       rgba(0,0,0,0.50);
+  --neo-faint:        rgba(0,0,0,0.25);
+  --neo-faint2:       rgba(0,0,0,0.15);
+  --neo-hover-bg:     rgba(0,0,0,0.05);
+  --neo-dashed:       rgba(0,0,0,0.25);
+  --neo-rule:         rgba(0,0,0,0.08);
+  --neo-margin:       rgba(210,40,40,0.18);
+  --neo-scheme:       light;
+}
+
+.dark {
+  --neo-bg:           #141414;
+  --neo-surface:      #1E1E1E;
+  --neo-border:       #F5F0CC;
+  --neo-shadow:       #F5F0CC;
+  --neo-text:         #FFFFFF;
+  --neo-muted:        rgba(255,255,255,0.65);
+  --neo-subtle:       rgba(255,255,255,0.50);
+  --neo-faint:        rgba(255,255,255,0.30);
+  --neo-faint2:       rgba(255,255,255,0.20);
+  --neo-hover-bg:     rgba(255,255,255,0.06);
+  --neo-dashed:       rgba(255,255,255,0.20);
+  --neo-rule:         rgba(245,240,204,0.07);
+  --neo-margin:       rgba(255,80,80,0.10);
+  --neo-scheme:       dark;
+}
+
+/* ── DARK MODE SURFACE OVERRIDES (CSS class descendants) ────────────────── */
+/* CSS variable cascade through inline-style parents is unreliable in some   */
+/* Next.js/Turbopack builds — these explicit rules are the reliable fallback. */
+.dark .glass {
+  background: #1E1E1E;
+  border-color: #F5F0CC;
+  box-shadow: 4px 4px 0 #F5F0CC;
+}
+
+.dark .glass-panel {
+  background: #1E1E1E;
+}
+
+.dark .glass-card {
+  background: #1E1E1E;
+  border-color: #F5F0CC;
+  box-shadow: 4px 4px 0 #F5F0CC;
+}
+
+.dark .glass-card:not(.editing):hover {
+  box-shadow: 7px 7px 0 #F5F0CC;
+}
+
+.dark .glass-card:not(.editing):active {
+  box-shadow: 2px 2px 0 #F5F0CC;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  overflow: hidden;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+/* ── NEO-BRUTALIST SURFACE SYSTEM ───────────────────────────────────────── */
+
+.glass {
+  background: var(--neo-surface);
+  border: 3px solid var(--neo-border);
+  box-shadow: 4px 4px 0 var(--neo-shadow);
+}
+
+.glass-panel {
+  background: var(--neo-surface);
+}
+
+.glass-card {
+  background: var(--neo-surface);
+  border: 2px solid var(--neo-border);
+  box-shadow: 4px 4px 0 var(--neo-shadow);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 150ms ease;
+}
+
+.glass-card:not(.editing):hover {
+  transform: translate(-3px, -3px) scale(1.02);
+  box-shadow: 7px 7px 0 var(--neo-shadow);
+}
+
+.glass-card:not(.editing):active {
+  transform: translate(2px, 2px) scale(0.99);
+  box-shadow: 2px 2px 0 var(--neo-shadow);
+  transition-duration: 60ms;
+}
+
+@keyframes cardZoomIn {
+  from { transform: scale(0.93); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── DATE INPUTS IN DARK MODE ────────────────────────────────────────────  */
+.dark input[type="date"],
+.dark select {
+  color-scheme: dark;
+}
+
+/* ── SCROLLBARS ──────────────────────────────────────────────────────────  */
+.scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neo-dashed) transparent;
+}
+.scroll-slim::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: var(--neo-dashed);
+  border-radius: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
